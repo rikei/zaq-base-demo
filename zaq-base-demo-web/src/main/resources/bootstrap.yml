@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: zaq-base-test
+  profiles:
+    active: dev
+server:
+  port: 8080
+
+#dev配置
+---
+spring:
+  profiles: dev
+
