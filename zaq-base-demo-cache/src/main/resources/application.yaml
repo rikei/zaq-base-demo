@@ -1,0 +1,26 @@
+spring:
+  redis:
+    redisson:
+      config: |
+        singleServerConfig:
+          idleConnectionTimeout: 10000
+          connectTimeout: 10000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          password: null
+          subscriptionsPerConnection: 5
+          clientName: null
+          subscriptionConnectionMinimumIdleSize: 1
+          subscriptionConnectionPoolSize: 50
+          connectionMinimumIdleSize: 24
+          connectionPoolSize: 64
+          database: 0
+          dnsMonitoringInterval: 5000
+          address: "redis://node01.zaqbest.com:6379"
+          password: CrjBysLfYGSoUdHt
+          nameMapper: !<com.zaqbest.base.cache.config.ZaqNameMapper> {"prefix":"myPrefix"}
+        threads: 16
+        nettyThreads: 32
+        codec: !<org.redisson.codec.JsonJacksonCodec> {}
+        transportMode: "NIO"

@@ -1,10 +1,10 @@
 package com.zaqbest.base.demo.web.controller;
 
-import com.zaqbest.base.demo.web.data.model.SysUser;
+import com.zaqbest.base.comm.domain.CommonResult;
+import com.zaqbest.base.demo.web.data.entity.SysUserEntity;
 import com.zaqbest.base.demo.web.service.UserService;
 import com.zaqbest.base.demo.web.support.log.annotation.WebLog;
 import com.zaqbest.base.web.domain.CommonPage;
-import com.zaqbest.base.web.domain.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,17 +28,17 @@ public class UserController {
     @ApiOperation(value = "查询所有")
     @RequestMapping(value = "/listAll", method = RequestMethod.GET)
     @WebLog
-    public CommonResult<List<SysUser>> listAll() {
+    public CommonResult<List<SysUserEntity>> listAll() {
         return CommonResult.success(userService.listAll());
     }
 
     @ApiOperation(value = "分页查询")
     @RequestMapping(value = "/getList", method = RequestMethod.GET)
     @WebLog
-    public CommonResult<CommonPage<SysUser>> page(@RequestParam(value = "keyword", required = false) String keyword,
+    public CommonResult<CommonPage<SysUserEntity>> page(@RequestParam(value = "keyword", required = false) String keyword,
                                                   @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
                                                   @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize) {
-        List<SysUser> userList = userService.list(keyword, pageNum, pageSize);
+        List<SysUserEntity> userList = userService.list(keyword, pageNum, pageSize);
         return CommonResult.success(CommonPage.restPage(userList));
     }
 }

@@ -15,6 +15,9 @@
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
         <!--生成mapper.xml时覆盖原文件-->
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- 添加 @Mapper 注解 -->
+        <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin" />
+
         <commentGenerator type="com.zaqbest.base.demo.mbg.plugin.CommentGenerator">
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
@@ -38,7 +41,9 @@
                              targetProject="${javaClient.targetProject}"/>
         <!--生成全部表tableName设为%-->
         <table tableName="%">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <!-- 不自动生成主键 -->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>
         </table>
     </context>
 </generatorConfiguration>

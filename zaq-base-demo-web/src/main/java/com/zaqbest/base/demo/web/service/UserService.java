@@ -1,11 +1,11 @@
 package com.zaqbest.base.demo.web.service;
 
-import com.zaqbest.base.demo.web.data.model.SysUser;
+import com.zaqbest.base.demo.web.data.entity.SysUserEntity;
 
 import java.util.List;
 
 public interface UserService {
-    List<SysUser> listAll();
+    List<SysUserEntity> listAll();
 
-    List<SysUser> list(String keyword, Integer pageNum, Integer pageSize);
+    List<SysUserEntity> list(String keyword, Integer pageNum, Integer pageSize);
 }
